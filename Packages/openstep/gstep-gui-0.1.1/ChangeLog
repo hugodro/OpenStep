@@ -1,0 +1,271 @@
+Thu Oct  3 19:36:07 1996  GNUstep Development  <gnustep@duncan.ocbi.com>
+
+	* Version (GNUSTEP_GUI_SUBMINOR_VERSION): Release version 0.1.1.
+
+	* Documentation/install.tmpl.texi: Update for new version.
+	* Documentation/news.tmpl.texi: Update for new version.
+	* Documentation/status.tmpl.texi: Update for new version.
+	* ANNOUNCE: Regenerate from documentation files.
+	* FAQ: Likewise.
+	* INSTALL: Likewise.
+	* NEWS: Likewise.
+	* README: Likewise.
+	* STATUS: Likewise.
+
+	* Documentation/*.texi.orig: Rename files to *.tmpl.texi.
+	* Documentation/Makefile.in: Changes for renamed files.
+
+Wed Oct  2 10:40:23 1996  GNUstep Development  <gnustep@duncan.ocbi.com>
+
+	* Headers/gnustep/gui/NSWindow.h: Add additional instance variables
+	to fill out implementation.
+	(-initDefaults): New method.
+	* Source/NSApplication.m: Assign values to the global exception and
+	notification strings.  Post notifications to the default notification
+	center.  Fixed bug where the first event was being removed from the
+	queue versus removing the event actually being processed.
+	* Source/NSMatrix.m: Fill out implementation, reimplement many
+	methods, and fix lots of bugs.
+	* Source/NSMenu.m: Don't create NSView as content view, just make
+	the menu matrix the content view.
+	* Source/NSWindow.m: Assign values to the notification strings.
+	Implement many unimplemented methods. Post notifications to the
+	default notification center.
+
+Sat Sep 21 12:25:23 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	* Source/NSButtonCell.m (-initTextCell:): Make default font
+	be the user font instead of the user fixed pitch font.
+	* Source/NSColor.m: Use global variables for common colors.
+	* Source/NSView.m (+popFocusView): Remove dictionary object.
+	* Source/NSWindow.m: Make default background color light gray.
+
+Thu Sep 12 13:49:53 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	* Headers/gnustep/gui/NSFontPrivate.h: New file.
+	* Headers/gnustep/gui/NSFont.h: Add typeface and weight variables.
+	* Source/NSFont.m: Fill out implementation.
+	* Source/NSFontManager.m: Likewise.
+	
+	* Headers/gnustep/gui/NSMenuPrivate.h: New file.
+	* Headers/gnustep/gui/NSMenu.h: Add instance variables to fill
+	out implementation.
+	* Source/NSMenu.m: Fill out implementation.
+
+	* Version (GNUSTEP_GUI_LIBTIFF): Required tiff library version.
+	(GNUSTEP_GUI_DPSCLIENT): Required DPSclient library version.
+	* configure: Run autoconf for configure.in changes.
+	* configure.in: Add check for tiff library.  Add check for
+	DPSclient library.
+	* Headers/gnustep/dps/DPSOperators.h: include in header
+	file from DPSclient library.
+	* Headers/gnustep/dps/NSDPSContext.h: Include DPS operators.
+	* Headers/gnustep/dps/TypesandConstants.h: Don't define some
+	typedefs if we have the DPSclient library.
+	* Headers/gnustep/gui/Functions.h (NSRectFill): Correct definition.
+	* Headers/gnustep/gui/config.h.in (HAVE_TIFF): Add definition for
+	tiff library.
+	(HAVE_DPSCLIENT): Add definition for DPSclient library.
+	* Headers/gnustep/gui/nsimage-tiff.h (HAVE_TIFF): Correct definition.
+	* Source/Makefile.in: Remove definition.
+	* Source/NSDPSContext.m: Specify default language and name encoding.
+	* Source/tiff.c: Delete include of non-existent header file.
+
+	* Source/Functions.m: Remove all function declarations that
+	belong in the backend implementation.
+	* Source/NSBox.m (-drawRect:): Remove use of DPS functions that
+	should be in backend.
+	* Source/NSView.m (-drawRect:): Likewise.
+
+	* Headers/gnustep/gui/NSApplication.h: Correct method definitions
+	that should be using NSNotification.
+	* Headers/gnustep/gui/NSWindow.h: Likewise.
+	* Source/NSApplication.m: Likewise.
+	* Source/NSWindow.m: Likewise.
+	* Headers/gnustep/gui/NSClipView.h: Include NSNotification.
+	* Headers/gnustep/gui/NSControl.h: Likewise.
+	* Headers/gnustep/gui/NSMatrix.h: Likewise.
+	* Headers/gnustep/gui/NSSplitView.h: Likewise.
+	* Headers/gnustep/gui/NSTextField.h: Likewise.
+	* Headers/gnustep/gui/NSWorkspace.h: Likewise.
+
+	* Headers/gnustep/gui/NSColorPrivate.h: New file.
+	* Headers/gnustep/gui/NSColor.h: Implement HSB colors.
+	* Source/NSColor.m: Implement HSB, CMYK, and grayscale methods.
+
+Tue Sep  3 15:24:41 1996  Adam Fedor  <fedor@pulse.Colorado.edu>
+
+	* NSBitmapImageRep.h: "Hide" instance variable names.  
+	* NSImageRep.h: Likewise.
+	* NSBitmapImageRep.m: Change all pertinent methods to use these new
+ 	names.
+	* NSImageRep.m: Likewise.
+	
+	* NSBitmapImageRep.m (-initWithBitmapDataPlanes:...): Alloc 
+	planes array and copy pointers into it.
+	(-dealloc]): Don't free image planes.
+	-bitmapData): retain image data. Alloc planes array if not 
+	already there. Fix typo.
+
+	* NSImage.m (extension): Get one copy of cString.
+	* NSImageRep.m (extension): Likewise.
+
+	* NSImage.m (-initWithSize:): Fix typo.
+	(iterate_reps_for_types): Use correct indices.
+
+	* NSImageRep.m (+initialize): Perform only if we are 
+	NSImageRep class.
+	(-imageRepsWithContentsOfFile:): Comment out non-working code.
+
+Tue Sep  3 13:47:52 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	Create initial documentation set.
+	* Documentation/Makefile.in: New file.
+	* Documentation/announce.texi.orig: New file.
+	* Documentation/faq.texi.orig: New file.
+	* Documentation/gnustep-gui.texi.orig: New file.
+	* Documentation/install.texi.orig: New file.
+	* Documentation/news.texi.orig: New file.
+	* Documentation/readme.texi.orig: New file.
+	* Documentation/status.texi.orig: New file.
+	* Documentation/todo.texi.orig: New file.
+	* ANNOUNCE: Now based upon Documentation/announce.texi.orig file.
+	* INSTALL: Now based upon Documentation/install.texi.orig file.
+	* NEWS: Now based upon Documentation/news.texi.orig file.
+	* README: Now based upon Documentation/readme.texi.orig file.
+	* FAQ: New file
+	* STATUS: New file
+	* TODO: New file
+	* configure.in (CONFIG_FILES): Add Documentation/Makefile.
+	* configure: Run autoconf for changes to configure.in.
+	* Version: Correct variable names.
+
+Mon Aug 12 14:16:12 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	* Headers/gnustep/gui/NSBitmapImageRep.h: Initial implementation
+	based upon Adam's Feodor work.
+	* Headers/gnustep/gui/NSCachedImageRep.h: Likewise.
+	* Headers/gnustep/gui/NSCustomImageRep.h: Likewise.
+	* Headers/gnustep/gui/NSEPSImageRep.h: Likewise.
+	* Headers/gnustep/gui/NSImage.h: Likewise.
+	* Headers/gnustep/gui/NSImageRep.h: Likewise.
+	* Source/NSBitmapImageRep.m: Likewise.
+	* Source/NSCachedImageRep.m: Likewise.
+	* Source/NSCustomImageRep.m: Likewise.
+	* Source/NSEPSImageRep.m: Likewise.
+	* Source/NSImage.m: Likewise.
+	* Source/NSImageRep.m: Likewise.
+
+	* Headers/gnustep/gui/NSApplication.h (-reportException:): Uncomment
+	method now that NSExceptions are implemented.
+	* Source/NSApplication.m (-reportException:): Likewise.
+	* Headers/gnustep/gui/NSText.h: Include NSNotification header file
+	now that class is implemented.
+	* Headers/gnustep/gui/config.h.in: Don't define NSNotification and
+	NSNotificationCenter to void as classes are now implemented.
+	* Headers/gnustep/gui/NSWindow.h: Uncomment methods now that NSScreen
+	class has been implemented.
+	* Source/NSWindow.m: Likewise.
+	* Source/Makefile.in: Changes to use TIFF library.
+	* Source/tiff.c: New file.
+	* Headers/gnustep/gui/nsimage-tiff.h: New file.
+
+Wed Jul 10 17:11:53 1996  Scott Christley <scottc@net-community.com>
+
+	* Source/NSView.m: Use NSDebugLog instead of NSLog.
+	* Source/NSWindow.m: Likewise.
+	* Source/NSResponder.m: Likewise.
+	* Source/NSMatrix.m: Likewise.
+	* Source/NSFontPanel.m: Likewise.
+	* Source/NSFontManager.m: Likewise.
+	* Source/NSFont.m: Likewise.
+	* Source/NSEvent.m: Likewise.
+	* Source/NSControl.m: Likewise.
+	* Source/NSButtonCell.m: Likewise.
+	* Source/NSApplication.m: Likewise.
+	* Source/NSActionCell.m: Likewise.
+	
+	* Source/Makefile.sed.nt: Disable debugging by default.
+
+Wed Jun 26 12:43:17 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	* Source/NSButton.m (mouseDown:): Correct cell state changes for
+	the different cell types.
+	* Source/NSActionCell.m (setState:): Update the cell.
+	* Source/NSControl.m (drawCell:, drawCellInside:): Pass the
+	control's bounds not its frame.
+	* Source/NSTextFieldCell.m (initTextCell:): Make the default
+	background color be white.
+	* Source/NSWindow.m: Corrections to key and main window
+	notification and first responder handling.
+
+Fri Jun 21 11:09:50 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	* Headers/gnustep/gui/NSScreen.h: Add instance variables for
+	a screen's device dictionary and for the backend.
+	* Source/NSButton.m (highlight:): Implement method.
+	(mouseDown:): Add mouse dragged events to tracking event mask.
+	* Source/NSCell.m (trackMouse:inRect:ofView:untilMouseUp:): Likewise.
+	* Source/NSMatrix.m (createInitialMatrix): Wrong initial capacity.
+	* Source/NSScreen.m: Initial implementation.
+	* Source/NSView.m (convertRectToWindow:): New method.
+	(convertPointToWindow:): New method.
+	(convertPoint:fromView:, convertPoint:toView:): Implement method.
+
+Wed Jun 19 14:25:46 1996  Scott Christley <scottc@net-community.com>
+
+	* Source/NSView.m (resizeSubviewsWithOldSize:): Implement method.
+	(setFrame:): Notify subviews that size has changed.
+	(initWithFrame:): Automatically resize subviews.
+	* Source/Makefile.sed.nt: Have the library automatically contain
+	COFF debugging information.
+	* Source/NSButton.m (mouseDown:): Ignore the mouse if the button
+	is not enabled.
+	* Source/NSFont.m (MB_USER_FIXED_FONT, MB_USER_FONT): Rename
+	global variables to correspond with coding standards.
+
+Thu Jun  6 09:20:51 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	* Headers/gnustep/gui/NSApplication.h (-context): New method.
+	* Source/Makefile.sed.nt (install): Delete AppKit and DPSClient
+	headers directories before installing headers.
+	* Source/NSApplication.m (gnustep_gui_app_is_in_dealloc): New
+	global variable to flag when the application is being dealloced
+	so it can prevent -release loops.
+	(+initialize, -dealloc, -removeWindowsItem:): Likewise.
+	(-context): New method.
+	* Source/NSView.m (+pushFocusView, +focusView): Remove
+	debugging information.
+
+Mon Jun  3 10:54:28 1996  GNUstep Development  <gnustep@ocbi.com>
+
+	* Makefile.in (clean-top, distclean): Correct targets and clean
+	all header subdirectories.
+	* Makefile.sed.nt: Modify for Makefile.in changes.
+	* Source/Makefile.in (clean): Remove additional temporary files.
+	* Source/NSDPSContext.m: Add some log messages.
+	* Source/NSView.m (+pushFocusView, +popFocusView): New methods.
+	* Source/NSView.m: Initial implementation of view focusing.
+
+Thu May 30 18:37:51 1996  Scott Christley <scottc@net-community.com>
+
+	* configure.bat: Modifications for new directory structure.
+	* Source/Makefile.in (uninstall): New target.
+	* Source/Makefile.sed.nt: Modifications for Source/Makefile.in
+	changes and new directory structure.
+
+Tue Feb 13 09:52:02 1996  Scott Christley <scottc@net-community.com>
+
+	* Headers/AppKit/NSText.h: Removed WIN32 instance variables
+
+Sun Feb 11 14:17:15 1996  Scott Christley <scottc@net-community.com>
+
+	* Makefile.in: Changed library name from libAppKit to libgnustep
+	* Renamed file libAppKit.m to libgnustep.m
+	* Changed terminology "Application Kit Library" to
+	"Application Library" to eliminate trademark conflicts with NeXT.
+
+Thu Feb  8 04:53:45 1996  Scott Christley <scottc@net-community.com>
+
+	* *.m: Conforms to NSCoding protocol
+	* *.h: Added NSCoding protocol methods

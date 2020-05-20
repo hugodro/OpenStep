@@ -1,0 +1,6 @@
+#!/bin/csh
+set path=($path /Users/hugo/AkraLog/Projets/JavaKit/Traducteurs/ObjC/next_i386)
+foreach i ( *.h )
+ echo Fait $i
+ tobjc $i
+end
